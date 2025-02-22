@@ -12,11 +12,12 @@ const CartItem = ({ onContinueShopping }) => {
         let total = 0;
 
         cart.forEach((item) => {
-            const cost = parseFloat(item.cost.substring(1));
-            total += item.quantity * cost;
+            if (item.cost) {
+                const cost = parseFloat(item.cost.substring(1));
+                total += item.quantity * cost;
+            }
+            return total;
         })
-
-        return total;
     };
 
     const handleContinueShopping = (e) => {
@@ -35,22 +36,18 @@ const CartItem = ({ onContinueShopping }) => {
         if (item.quantity > 1) {
             dispatch(updateQuantity({ name: item.name, quantity: item.quantity - 1 }));
         } else {
-            dispatch(removeItem(item.name))
+            dispatch(removeItem(item))
         }
     };
 
     const handleRemove = (item) => {
-        dispatch(removeItem(item.name))
+        dispatch(removeItem(item))
     };
 
     // Calculate total cost based on quantity for an item
     const calculateTotalCost = (item) => {
-        let total = 0;
-
-        const cost = parseFloat(item.cost.substring(1));
-        total += item.quantity * cost;
-
-        return total;
+        const cost = parseFloat(item.cost.substring(1)); // Store the parsed value
+        return item.quantity * cost;
     };
 
     return (
