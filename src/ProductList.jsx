@@ -11,8 +11,6 @@ function ProductList() {
     const dispatch = useDispatch();
     const cart = useSelector(state => state.cart.items);
 
-
-
     const plantsArray = [
         {
             category: "Air Purifying Plants",
@@ -260,8 +258,6 @@ function ProductList() {
         setAddedToCart((prevState) => ({ ...prevState, [product.name]: true }))
 
     }
-
-    console.log("PLANTS", plantsArray);
 
     return (
         <div>
