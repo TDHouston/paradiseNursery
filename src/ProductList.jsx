@@ -10,6 +10,7 @@ function ProductList() {
 
     const dispatch = useDispatch();
     const cart = useSelector(state => state.cart.items);
+    const quantity = cart.reduce((total, element) => total + element.quantity, 0);
 
     const plantsArray = [
         {
@@ -256,7 +257,6 @@ function ProductList() {
     const handleAddToCart = (product) => {
         dispatch(addItem(product))
         setAddedToCart((prevState) => ({ ...prevState, [product.name]: true }))
-
     }
 
     return (
