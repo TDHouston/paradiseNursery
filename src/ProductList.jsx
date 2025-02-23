@@ -10,7 +10,9 @@ function ProductList() {
 
     const dispatch = useDispatch();
     const cart = useSelector(state => state.cart.items);
-    const itemQuantity = cart.
+
+
+
     const plantsArray = [
         {
             category: "Air Purifying Plants",
@@ -258,6 +260,9 @@ function ProductList() {
         setAddedToCart((prevState) => ({ ...prevState, [product.name]: true }))
 
     }
+
+    console.log("PLANTS", plantsArray);
+
     return (
         <div>
             <div className="navbar" style={styleObj}>
@@ -290,7 +295,7 @@ function ProductList() {
                                         <div className='product-title'>{plant.name}</div>
                                         <div className='product-description'>{plant.description}</div>
                                         <div className='product-price'>{plant.cost}</div>
-                                        <button className='product-button' onClick={() => handleAddToCart(plantIndex)}>Add to Cart</button>
+                                        <button className='product-button' onClick={() => handleAddToCart(plant)}>Add to Cart</button>
                                     </div>
                                 ))}
                             </div>
